@@ -1,14 +1,32 @@
 import React from 'react'
+import {Form} from './components/formulaire/form.component'
 import './App.css'
 
 class App extends React.Component {
 
   // Constructeur
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      lieux: []
+      lieu: [],
+      km: []
     }
+  }
+
+  // Modifcations du state
+  handleChange = (e) => {
+    const name = e.target.name;
+
+    this.setState({
+      [name]: e.target.value
+    },
+    this.saveLocal
+    );
+  }
+
+  // Sauvegarder le state dans localstorage
+  saveLocal = () => {
+    localStorage.setItem('lieu', JSON.stringify(this.state))
   }
 
   render() {
@@ -17,6 +35,9 @@ class App extends React.Component {
     return (
       <div className='App'>
         <h1>Trajet du van</h1>
+        <Form
+          handleChange = {this.handleChange}
+        />
       </div>
     )
   }
