@@ -21,12 +21,12 @@ class App extends React.Component {
       [name]: e.target.value
     },
     this.saveLocal
-    );
+    )
   }
 
-  // Sauvegarder le state dans localstorage
+  // Sauvegarde du state dans localstorage
   saveLocal = () => {
-    localStorage.setItem('lieu', JSON.stringify(this.state))
+    localStorage.setItem('list', JSON.stringify(this.state))
   }
 
   render() {
