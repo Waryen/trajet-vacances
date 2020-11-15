@@ -1,32 +1,33 @@
 import React from 'react'
 import {Form} from './components/formulaire/form.component'
+import {List} from './components/liste/list.component'
 import './App.css'
 
 class App extends React.Component {
-
-  // Constructeur
   constructor(props) {
     super(props)
-    this.state = {
-      lieu: [],
-      km: []
-    }
+    this.state = { name: null, distance: null }
   }
 
-  // Modifcations du state
+  // Gestion des inputs du formulaire
   handleChange = (e) => {
-    const name = e.target.name;
-
     this.setState({
-      [name]: e.target.value
+      [e.target.id]: e.target.value
     },
     this.saveLocal
     )
   }
 
+  // Gestion de l'envoie du formulaire
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.saveLocal()
+    console.log(this.state)
+  }
+
   // Sauvegarde du state dans localstorage
   saveLocal = () => {
-    localStorage.setItem('list', JSON.stringify(this.state))
+    localStorage.setItem('destination', JSON.stringify(this.state))
   }
 
   render() {
@@ -37,7 +38,9 @@ class App extends React.Component {
         <h1>Trajet du van</h1>
         <Form
           handleChange = {this.handleChange}
+          handleSubmit = {this.handleSubmit}
         />
+        <List data = {this.state} />
       </div>
     )
   }

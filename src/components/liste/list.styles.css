@@ -1,0 +1,9 @@
+div.list {
+    display: flex;
+    background-color: bisque;
+    border: 1px solid;
+    height: 300px;
+    width: 60%;
+    padding: 10px;
+    margin: 5px;
+}

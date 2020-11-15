@@ -1,22 +1,20 @@
 import React from 'react'
 import './form.styles.css'
 
-export const Form = ({handleChange}) => (
-    <form>
+export const Form = ({handleChange, handleSubmit}) => (
+    <form onSubmit={handleSubmit}>
         <label>Nom: </label>
         <input
-            className='addName'
             type='text'
-            name='lieu'
+            id='name'
             onChange={handleChange}
         />
-        <label>Distance en kilomètres: </label>
+        <label>Distance (Km): </label>
         <input
-            className='addKm'
             type='number'
-            name='km'
+            id='distance'
             onChange={handleChange}
         />
-        <button type='submit'>Ajouter</button>
+        <button type='submit' id='send'>Ajouter</button>
     </form>
 )
