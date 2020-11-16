@@ -6,7 +6,15 @@ import './App.css'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { places: ['kevin', 'jean'], distances: [0, 1] }
+    this.state = { places: [], distances: [] }
+  }
+
+  // Chargement du state enregistré dans localstorage
+  componentDidMount() {
+    const state = localStorage.getItem('destinations')
+    if (state) {
+      this.setState(JSON.parse(state))
+    }
   }
 
   // Gestion de l'input place
@@ -24,14 +32,13 @@ class App extends React.Component {
   // Gestion de l'envoie du formulaire
   handleSubmit = (e) => {
     e.preventDefault()
-    const newItem = e.target.value
-    this.setState({ places: [...this.state.places, newItem] })
+    this.saveLocal()
     console.log(this.state)
   }
 
   // Sauvegarde du state dans localstorage
   saveLocal = () => {
-    localStorage.setItem('destination', JSON.stringify(this.state))
+    localStorage.setItem('destinations', JSON.stringify(this.state))
   }
 
   render() {
