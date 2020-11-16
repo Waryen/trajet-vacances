@@ -3,9 +3,10 @@ form {
     flex-direction: column;
     width: 50%;
     border: 1px solid;
+    border-radius: 10px;
     padding: 10px;
     margin: 5px;
-    background-color: bisque;
+    background-color: rgba(255, 228, 196, 0.5);
 }
 
 form label:nth-of-type(2) {

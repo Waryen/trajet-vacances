@@ -9,4 +9,10 @@
 .App h1 {
   text-align: center;
   color: teal;
+  font-size: 3em;
+}
+
+.App h2 {
+  text-align: center;
+  color: cadetblue;
 }

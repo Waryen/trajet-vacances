@@ -7,9 +7,9 @@ export const List = (props) => {
     return (
         <div className='list'>
             <ul>
-                <li>
-                    <p> {data.name} </p>
-                </li>
+                {data.places.map((value, index) => <li key={index}> {value} </li> )}
+                -
+                {data.distances.map((value, index) => <li key={index}> {value} </li> )}
             </ul>
         </div>
     )

@@ -6,22 +6,26 @@ import './App.css'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { name: null, distance: null }
+    this.state = { places: ['kevin', 'jean'], distances: [0, 1] }
   }
 
-  // Gestion des inputs du formulaire
-  handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    },
-    this.saveLocal
-    )
+  // Gestion de l'input place
+  handleChangePlace = (e) => {
+    const newItem = e.target.value
+    this.setState({ places: [...this.state.places, newItem] })
+  }
+
+  // Gestion de l'input distance
+  handleChangeDistance = (e) => {
+    const newItem = e.target.value
+    this.setState({ distances: [...this.state.distances, newItem] })
   }
 
   // Gestion de l'envoie du formulaire
   handleSubmit = (e) => {
     e.preventDefault()
-    this.saveLocal()
+    const newItem = e.target.value
+    this.setState({ places: [...this.state.places, newItem] })
     console.log(this.state)
   }
 
@@ -37,10 +41,17 @@ class App extends React.Component {
       <div className='App'>
         <h1>Trajet du van</h1>
         <Form
-          handleChange = {this.handleChange}
+          handleChangePlace = {this.handleChangePlace}
+          handleChangeDistance = {this.handleChangeDistance}
           handleSubmit = {this.handleSubmit}
         />
-        <List data = {this.state} />
+        <h2>Liste des destinations</h2>
+        <div className='list'>
+            <ul>
+                {this.state.places.map((value, index) => <li key={index}> {value} </li> )}
+                {this.state.distances.map((value, index) => <li key={index}> {value} </li> )}
+            </ul>
+        </div>
       </div>
     )
   }
