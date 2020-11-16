@@ -2,6 +2,9 @@ import React from 'react'
 import './form.styles.css'
 
 export const Form = ({handleChangePlace, handleChangeDistance, handleSubmit}) => (
+
+    // Formulaire recevant des méthodes de App.js en props dans le but d'injecter des données dans le state
+    
     <form onSubmit={handleSubmit}>
         <label>Lieu: </label>
         <input

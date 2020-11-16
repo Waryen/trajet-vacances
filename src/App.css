@@ -10,9 +10,24 @@
   text-align: center;
   color: teal;
   font-size: 3em;
+  text-shadow: 0px 0px 5px #000000;
 }
 
 .App h2 {
   text-align: center;
   color: cadetblue;
+  font-size: 2em;
+  text-shadow: 0px 0px 5px #000000;
+}
+
+.App .list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.App .copyrights {
+  color: #ffffff;
+  position: absolute;
+  bottom: 0vh;
 }
