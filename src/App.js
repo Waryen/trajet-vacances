@@ -22,7 +22,6 @@ class App extends React.Component {
     if (state) {
       this.setState({tab: JSON.parse(state)})
     }
-    console.log(this.state.tab)
   }
 
   // Gestion des changements des inputs du formulaire
@@ -43,10 +42,7 @@ class App extends React.Component {
     this.setState(prevState => ({
       tab: [...prevState.tab, prevState.lieu],
       lieu: { name: "", km: 0 }
-    }))
-
-    this.saveLocal()
-    console.log(this.state.tab)
+    }), this.saveLocal())
   }
 
   // Sauvegarde du state dans localstorage

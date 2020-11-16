@@ -3,7 +3,7 @@ import './form.styles.css'
 
 export const Form = ({handleChange, handleSubmit, lieu}) => {
     return (
-        <form>
+        <form method='post'>
             <label>Lieu: </label>
             <input
                 type='text'

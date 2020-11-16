@@ -20,3 +20,7 @@
     margin: 5px;
     list-style-type: none;
 }
+
+.list ul.tab li:last-of-type {
+    padding-left: 25px;
+}

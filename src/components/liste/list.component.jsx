@@ -8,10 +8,7 @@ export const List = ({props}) => {
           <ul>
             {tab.map((tab, index) => (
               <li key={index}>
-                <ul className='tab'>
-                  <li className='tab-lieu'>Lieu: {tab.name}</li>
-                  <li className='tab-distance'>Distance (km): {tab.km}</li>
-                </ul>
+                {tab.name} - {tab.km} km
               </li>
             ))}
           </ul>
