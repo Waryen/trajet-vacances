@@ -6,76 +6,69 @@ import './App.css'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { places: [], distances: [] }
+    this.state = {
+      lieu: {
+        name: '',
+        km: 0
+      },
+      tab: []
+    }
   }
 
   // Chargement du state enregistré dans localstorage
 
   componentDidMount() {
-    const state = localStorage.getItem('destinations')
+    const state = localStorage.getItem('lieux')
     if (state) {
-      this.setState(JSON.parse(state))
+      this.setState({tab: JSON.parse(state)})
     }
+    console.log(this.state.tab)
   }
 
-  // Gestion de l'input place
+  // Gestion des changements des inputs du formulaire
 
-  handleChangePlace = (e) => {
-    const newItem = e.target.value
-    this.setState({ places: [...this.state.places, newItem] })
+  handleChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState(prevState => ({
+      lieu: { ...prevState.lieu, [name]: value }
+    }))
   }
 
-  // Gestion de l'input distance
-
-  handleChangeDistance = (e) => {
-    const newItem = e.target.value
-    this.setState({ distances: [...this.state.distances, newItem] })
-  }
-
-  // Gestion de l'envoie du formulaire
+  // Gestion de l'envoi du formulaire
 
   handleSubmit = (e) => {
-    //e.preventDefault()
+    e.preventDefault();
+
+    this.setState(prevState => ({
+      tab: [...prevState.tab, prevState.lieu],
+      lieu: { name: "", km: 0 }
+    }))
+
     this.saveLocal()
-    console.log(this.state)
+    console.log(this.state.tab)
   }
 
   // Sauvegarde du state dans localstorage
 
   saveLocal = () => {
-    localStorage.setItem('destinations', JSON.stringify(this.state))
+    localStorage.setItem('lieux', JSON.stringify(this.state.tab))
   }
 
   render() {
 
     // Rendu affiché dans le navigateur
-    
+
     return (
       <div className='App'>
         <h1>Trajet du van</h1>
         <Form
-          handleChangePlace = {this.handleChangePlace}
-          handleChangeDistance = {this.handleChangeDistance}
+          handleChange = {this.handleChange}
           handleSubmit = {this.handleSubmit}
+          lieu = {this.state.lieu}
         />
         <h2>Liste des destinations</h2>
-        <div className='list'>
-          <div className='list-element'>
-            <h3>Lieux:</h3>
-            <ul>
-              {this.state.places.map((value, index) => <li key={index}> {value} </li> )}
-            </ul>
-          </div>
-          <div className='list-element'>
-            <h3>Distances (km):</h3>
-            <ul>
-              {this.state.distances.map((value, index) => <li key={index}> {value} </li> )}
-            </ul>
-          </div>
-        </div>
-        <div className='copyrights'>
-          <p>© Jonathan Gomand</p>
-        </div>
+        <List props = {this.state.tab} />
       </div>
     )
   }

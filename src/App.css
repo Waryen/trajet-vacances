@@ -19,15 +19,3 @@
   font-size: 2em;
   text-shadow: 0px 0px 5px #000000;
 }
-
-.App .list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.App .copyrights {
-  color: #ffffff;
-  position: absolute;
-  bottom: 0vh;
-}
