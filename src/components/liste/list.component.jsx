@@ -3,6 +3,7 @@ import './list.styles.css'
 
 export const List = ({props}) => {
     const tab = props
+
     return (
         <div className='list'>
           <ul>

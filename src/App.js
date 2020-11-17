@@ -1,6 +1,7 @@
 import React from 'react'
 import {Form} from './components/formulaire/form.component'
 import {List} from './components/liste/list.component'
+import {Calcul} from './components/calcul/calcul.component'
 import './App.css'
 
 class App extends React.Component {
@@ -42,7 +43,9 @@ class App extends React.Component {
     this.setState(prevState => ({
       tab: [...prevState.tab, prevState.lieu],
       lieu: { name: "", km: 0 }
-    }), this.saveLocal())
+    }))
+
+    this.saveLocal()
   }
 
   // Sauvegarde du state dans localstorage
@@ -65,6 +68,8 @@ class App extends React.Component {
         />
         <h2>Liste des destinations</h2>
         <List props = {this.state.tab} />
+        <h2>Total de kilomètres parcouru</h2>
+        <Calcul props = {this.state.tab} />
       </div>
     )
   }
