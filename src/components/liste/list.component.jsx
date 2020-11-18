@@ -8,10 +8,11 @@ export const List = ({props}) => {
 
     return (
         <div className='list'>
+          <h2>Liste des lieux</h2>
           <ul>
             {tab.map((tab, index) => (
               <li key={index}>
-                {tab.name} - {tab.km} km
+                <span className='val'>{tab.name}</span> - <span className='val'>{tab.km}</span> km
               </li>
             ))}
           </ul>
