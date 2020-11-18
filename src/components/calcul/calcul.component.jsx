@@ -3,17 +3,21 @@ import './calcul.styles.css'
 
 export const Calcul = ({props}) => {
     const tab = props
-    const newTab = []
+    let calcul = 0
+    let convert
 
-    for(let i = 0; i < tab.length; i++) {
-        newTab.push(tab[i])
+    // boucle sur les distances parcourues, conversion en number et addition au total
+
+    if(tab.length > 0) {
+        for(let i =0; i < tab.length; i++) {
+            convert = parseInt(tab[i].km, 10)
+            calcul += convert
+        }
     }
-
-    console.log(newTab)
 
     return(
         <div className='calcul'>
-
+            <h2>Distance totale: <span>{calcul}</span> km </h2>
         </div>
     )
 }

@@ -1,8 +1,9 @@
 .list {
+    color: #ffffff;
     display: flex;
-    background-color: rgb(226, 226, 226);
+    background-color: rgba(54, 54, 54, 0.9);
     border-radius: 10px;
-    width: 25vw;
+    width: 30vw;
     padding: 5px;
     margin: 5px;
 }
@@ -24,4 +25,18 @@
 
 .list ul.tab li:last-of-type {
     padding-left: 25px;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+  .list {
+      width: 50vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .list {
+      width: 70vw;
+  }
 }

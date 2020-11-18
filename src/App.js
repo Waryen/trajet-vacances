@@ -16,7 +16,7 @@ class App extends React.Component {
     }
   }
 
-  // Chargement du state enregistré dans localstorage
+  // Chargement du localstorage, si il existe, il l'ajoute dans le state
 
   componentDidMount() {
     const state = localStorage.getItem('lieux')
@@ -25,7 +25,7 @@ class App extends React.Component {
     }
   }
 
-  // Gestion des changements des inputs du formulaire
+  // Gestion des changements des inputs du formulaire, ajoute les données dans le state lieu
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +35,7 @@ class App extends React.Component {
     }))
   }
 
-  // Gestion de l'envoi du formulaire
+  // Gestion de l'envoi du formulaire, ajoute les données du state lieu dans le state array tab
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -44,32 +44,26 @@ class App extends React.Component {
       tab: [...prevState.tab, prevState.lieu],
       lieu: { name: "", km: 0 }
     }))
-
-    this.saveLocal()
   }
 
   // Sauvegarde du state dans localstorage
 
-  saveLocal = () => {
+  componentDidUpdate() {
     localStorage.setItem('lieux', JSON.stringify(this.state.tab))
   }
 
   render() {
-
-    // Rendu affiché dans le navigateur
-
     return (
       <div className='App'>
         <h1>Trajet du van</h1>
+        <Calcul props = {this.state.tab} />
         <Form
           handleChange = {this.handleChange}
           handleSubmit = {this.handleSubmit}
           lieu = {this.state.lieu}
         />
-        <h2>Liste des destinations</h2>
         <List props = {this.state.tab} />
-        <h2>Total de kilomètres parcouru</h2>
-        <Calcul props = {this.state.tab} />
+        <p id='copyrights'><strong>© Jonathan Gomand</strong></p>
       </div>
     )
   }
